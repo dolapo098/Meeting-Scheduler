@@ -6,5 +6,4 @@ const scheduleValidator = joi.object({
     venue = joi.string().required(),
     duration = joi.array().items(joi.number())
 })
-
 module.exports= scheduleValidator;

@@ -6,6 +6,9 @@ const config = require('config');
 const jwtKey = config.get("secretkey");
 const userModel = require('../model/User')
 
+// @route  Post routes/user
+// @desc   register users
+//@access  public
 router.post('/addUser', async(req,res)=>{
     const {name,email,password} = req.body
     try{
@@ -28,24 +31,18 @@ router.post('/addUser', async(req,res)=>{
             id : user.id
             }
         }
-
         jwt.sign(payload,jwtKey, { expiresIn: "24h" }, (err,token)=>{
             if(err)throw err
             res.status(200).json({token})
         })
-       
-            }
-       
+            } // end of if validation
             else{
                 res.status(400).json(err);
                 console.log(err)
-            }
-        
-     
+            } //send error if middleware validation fails 
     } /* end of try block */ catch(err){
         console.log(err);
     }
 })
-
 module.exports= router ;
 

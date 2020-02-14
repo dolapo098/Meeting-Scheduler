@@ -13,5 +13,4 @@ const userModel = new Schema({
         type : String
     }
 })
-
 module.exports = mongoose.model('profile', userModel);

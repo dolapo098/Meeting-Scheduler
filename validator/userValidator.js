@@ -4,5 +4,4 @@
       email: joi.string().required().email({minDomainSegments:2 ,tlds: { allow: ['com', 'net'] }}),
       password : joi.string().required(),
   })
-
   module.exports= userJoi;

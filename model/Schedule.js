@@ -27,8 +27,7 @@ const scheduleSchema = new Schema({
     },
     duration :{
         type : Array,
-        default: [10,20,30,40,50,60]
+        required : true
     }
 })
-
 module.exports = mongoose.model('schedule', scheduleSchema);
