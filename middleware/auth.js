@@ -3,7 +3,7 @@ const config = require('config');
 const jwtKey =config.get('secretkey')
 
 module.exports= function(req,res,next){
-    const token = "x-auth-token"
+    const token = req.header("x-auth-token")
     if(!token){
         res.status(400).send('no authorization token set to header');
     }

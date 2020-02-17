@@ -11,7 +11,6 @@ const dbConnect = async()=>{
         console.log('database now connected')
     }catch(err){
         console.log(err);
-
     }
 }
 

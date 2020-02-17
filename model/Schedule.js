@@ -1,33 +1,30 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const scheduleSchema = new Schema({
+const scheduleModel = new Schema({
     user:{
-        type: mongoose.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'profile'
     },
     createdBy:{
         type : String //name
     },
-    To :{
-        type : String //emails []
+    to :{
+        type : Array //emails []
     },
-     startDate :{
-        type: Date,
-        required : true
+     meetingTime :{
+        type:  Date, /* IsoDate format 2020/02/17  12:41:34 */
+        required : true /*formats to date and time object */
     },
      endDate :{
-        type : Date
-    },
-    startTime :{
-        type :String, /* 11:00 format */
+        type : Date,
         required : true
     },
     venue:{
         type :String
     },
     duration :{
-        type : Array,
+        type : Number,
         required : true
     }
 })
-module.exports = mongoose.model('schedule', scheduleSchema);
+module.exports = mongoose.model('schedule', scheduleModel);

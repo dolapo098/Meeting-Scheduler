@@ -1,11 +1,10 @@
 const { check, validationResult } = require('express-validator')
 
 function validateInputs(){
-    return [check('startDate',"startDate is required in date format").isString().toDate().not().isEmpty(),
+    return [check('meetingTime',"startDate is required in date format").isString().toDate().not().isEmpty(),
     check('endDate',"endDate is required in date format").isString().toDate(),
-    check('startTime',"password must be in lenght of 6 characters").isString().toDate(),
-    check('venue',"venue is required in string format").isString(),
-    check('duration',"duration is required in object").isArray().isString().not().isEmpty()]
+    check('venue',"venue is required in string format").isString().not().isEmpty(),
+    check('duration',"duration is required in object").isNumeric().not().isEmpty()]
 }
 function setErrors(req,res,next){
     const errors = validationResult(req)
