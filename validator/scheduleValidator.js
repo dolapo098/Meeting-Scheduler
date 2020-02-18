@@ -1,11 +1,11 @@
 const { check, validationResult } = require('express-validator')
 
 function validateInputs(){
-    return [check('name',"name is required in text").isString().not().isEmpty(),
-    check('email',"emal is required in @.com").isEmail().not().isEmpty(),
-    check('password',"password must be in lenght of 6 characters").isLength({min:6}).not().isEmpty()]
+    return [check('meetingTime',"startDate is required in date format").isString().toDate().not().isEmpty(),
+    check('endDate',"endDate is required in date format").isString().toDate(),
+    check('venue',"venue is required in string format").isString().not().isEmpty(),
+    check('duration',"duration is required in object").isNumeric().not().isEmpty()]
 }
-//funtion to get the errors in a middleware route
 function setErrors(req,res,next){
     const errors = validationResult(req)
     if(!errors.isEmpty()){
